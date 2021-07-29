@@ -81,12 +81,11 @@ const medianNumber = 8
 function pyramid() {
 
     let arr = []
+    let pyramid = []
 
     for (let i = 0; i < (medianNumber * 2) - 1; i++) {
         arr[i] = '#';
     }
-
-    console.log(arr.join(''))
 
     for (let i = 0; i < medianNumber - 1; i++) {
         delete arr[i]
@@ -94,7 +93,15 @@ function pyramid() {
         delete arr[(arr.length - 1) - i]
         arr[(arr.length - 1) - i] = '-';
 
-        console.log(arr.join(''))
+        let newArr = arr.slice()
+
+        pyramid.push(newArr)
+
+    }
+
+    pyramid.reverse()
+    for (i = 0; i < pyramid.length; i++) {
+        console.log(pyramid[i].join(''))
     }
 }
 
