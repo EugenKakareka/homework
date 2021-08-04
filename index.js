@@ -57,3 +57,34 @@ const namesOfDays = {
     ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
     en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 }
+
+function getNameOfDay(day, lang) {
+
+    return namesOfDays[lang][day - 1]
+}
+
+getNameOfDay(1, 'ru')
+
+
+
+//task4
+
+function arrSumTwo(arr) {
+    if (arr.length < 4) {
+        console.log("Массив должен содержать минимум 4 положительных целых чисел")
+        return
+    }
+
+    let arrSort = arr.sort((a, b) => a - b)
+
+    for (let i = 0; i < arrSort.length - 1; i++) {
+        if (arrSort[i] === arrSort[i + 1]) {
+            console.log('В массиве не могут содержаться одинаковые числа.')
+            return
+        }
+    }
+
+    let sum = arrSort[0] + arrSort[1]
+
+    console.log(sum)
+}
