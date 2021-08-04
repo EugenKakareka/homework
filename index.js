@@ -13,3 +13,11 @@ class Emploee {
         return this.surname + ' ' + this.name
     }
 }
+
+let createEmployesFromArr = (arr) => {
+    let employers = [];
+    arr.forEach((employee) => employers.push(new Emploee(employee)))
+    return employers;
+};
+
+const employeeConstructArr = createEmployesFromArr(employeeArr)
