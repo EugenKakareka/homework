@@ -14,11 +14,22 @@ class Emploee {
     }
 
     get fullInfo() {
+        let info = []
         for (let key in this) {
-            console.log(key)
+            info.push(`${key} -  ${this[key]}`)
+        }
+
+        return info.join(',')
+    }
+
+    set fullInfo(obj) {
+        for (let key in this) {
+
         }
     }
 }
+
+
 
 let createEmployesFromArr = (arr) => {
     let employers = [];
