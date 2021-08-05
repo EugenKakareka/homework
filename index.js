@@ -12,6 +12,12 @@ class Emploee {
     getFullName() {
         return this.surname + ' ' + this.name
     }
+
+    get fullInfo() {
+        for (let key in this) {
+            console.log(key)
+        }
+    }
 }
 
 let createEmployesFromArr = (arr) => {
@@ -43,8 +49,6 @@ const middleSalary = getMiddleSalary(employeeConstructArr)
 const getRandomEmployee = (arr) => {
 
     let max = arr.length
-
     let i = Math.floor(Math.random() * (max + 1));
-
     return arr[i]
 }
