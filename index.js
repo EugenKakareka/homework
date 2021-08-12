@@ -117,6 +117,19 @@ class CustomString {
 
 class Validator {
     checkIsEmail(str) {
+
+        if (str[0] === '.' || str[str.length - 1] === '.') {
+            return false
+        }
+
+        if (str.indexOf(' ') !== -1) {
+            return false
+        }
+
+        if (str.indexOf('..') !== -1) {
+            return false
+        }
+
         let arr = str.split('@')
 
         if (arr.length !== 2) {
@@ -129,9 +142,7 @@ class Validator {
         if (arr[1].length < 3) {
             return false
         }
-        if (arr[0].indexOf('.') > 1 || arr[0].indexOf('.') > 1) {
-            return false
-        }
+
         if (arr[1].indexOf('.') == -1) {
             return false
         } else return true
