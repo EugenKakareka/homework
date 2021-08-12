@@ -41,7 +41,7 @@ class Student {
 
             if (countStudentWithoutPayment >= this.limit) {
                 function sortByRating(arr) {
-                    arr.sort((a, b) => a.ratingPoint > b.ratingPoint ? -1 : 1);
+                    arr.sort((a, b) => b.ratingPoint - a.ratingPoint || b.schoolPoint - a.schoolPoint);
                 }
                 sortByRating(this.listOfStudents)
 
@@ -72,5 +72,44 @@ class Student {
 
             }
         }
+    }
+}
+
+
+
+class CustomString {
+    reverse(str) {
+        if (!str) return str
+        let reverse = ''
+        for (let i = str.length - 1; i >= 0; i--) {
+            reverse += str[i]
+        }
+        return reverse
+    }
+
+    ucFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+    }
+
+    ucWords(str) {
+
+        let newStr = ''
+
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] !== ' ' && str[i - 1] !== ' ') {
+                newStr += str[i]
+            }
+
+            if (str[i] === ' ') {
+                newStr += str[i]
+                newStr += str[i + 1].toUpperCase()
+            }
+
+            if (str[i - 1] === ' ') {
+                continue
+            }
+        }
+
+        return this.ucFirst(newStr)
     }
 }
