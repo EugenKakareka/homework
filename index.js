@@ -156,14 +156,14 @@ class Validator {
         return true
     }
     checkIsDate(str) {
-        let regExp
+        let regExp = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/
         if (!regExp.test(str)) {
             return false;
         }
         return true
     }
     checkIsPhone(str) {
-        let regExp
+        let regExp = /^+380\d{3}\d{2}\d{2}\d{2}$/
         if (!regExp.test(str)) {
             return false;
         }
