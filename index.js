@@ -145,9 +145,28 @@ class Validator {
 
         if (arr[1].indexOf('.') == -1) {
             return false
-        } else return true
+        }
+        return true
     }
-    checkIsDomain() {}
-    checkIsDate() {}
-    checkIsPhone() {}
+    checkIsDomain(str) {
+        let regExp = /^([a-z0-9]+\.)?[a-z0-9][a-z0-9-]*\.[a-z]{2,6}$/i
+        if (!regExp.test(str)) {
+            return false;
+        }
+        return true
+    }
+    checkIsDate(str) {
+        let regExp
+        if (!regExp.test(str)) {
+            return false;
+        }
+        return true
+    }
+    checkIsPhone(str) {
+        let regExp
+        if (!regExp.test(str)) {
+            return false;
+        }
+        return true
+    }
 }
