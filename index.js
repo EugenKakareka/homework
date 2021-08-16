@@ -1,8 +1,8 @@
 function makeCounter() {
     let count = 0;
     return function(a) {
-        return count += a;
-    };
+        return count += a
+    }
 }
 
 let counter = makeCounter()
@@ -10,13 +10,13 @@ let counter = makeCounter()
 
 
 function getArray() {
-    let arr = [];
+    let arr = []
     return function(elem) {
         if (elem == undefined) {
             arr = []
         }
-        arr.push(elem);
-        return arr;
+        arr.push(elem)
+        return arr
     }
 }
 
@@ -39,7 +39,6 @@ let getTime = setTime()
 
 
 
-
 const timer = time => {
     let min = parseInt(time / 60)
     let seconds = parseInt(time - min * 60)
@@ -51,7 +50,7 @@ const timer = time => {
     time--
 
     if (time > 0) {
-        setTimeout(function() { timer(time); }, 1000);
+        setTimeout(function() { timer(time) }, 1000)
     } else {
         console.log('Time End')
     }
