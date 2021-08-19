@@ -89,4 +89,45 @@ const getCompanyNames = companyNames(condidateArr)
 
 //task 7
 
+function getUsersByYear(year) {
+    let listId = []
+    condidateArr.forEach(item => {
+        if (item.registered.split('-')[0] == year) listId.push(item._id)
+    })
+
+    console.log(listId)
+}
+
 getUsersByYear(2017)
+
+
+//task 8
+
+function getCondidatesByUnreadMsg(msg) {
+
+    function findNumber(str) {
+        let arr = str.split(' ')
+        for (i = 0; i < arr.length; i++) {
+            if (!isNaN(arr[i])) {
+                return arr[i]
+            }
+        }
+    }
+
+    let unreadArr = []
+
+    condidateArr.forEach(item => { if (findNumber(item.greeting) == msg) unreadArr.push(new Condidate(item)) })
+
+    console.log(unreadArr)
+
+}
+
+getCondidatesByUnreadMsg(8)
+
+//task 9
+
+function getCondidatesByGender() {
+
+}
+
+getCondidatesByGender('male')
