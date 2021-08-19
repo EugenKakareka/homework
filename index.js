@@ -114,11 +114,11 @@ function getCondidatesByUnreadMsg(msg) {
         }
     }
 
-    let unreadArr = []
+    let unreadList = []
 
-    condidateArr.forEach(item => { if (findNumber(item.greeting) == msg) unreadArr.push(new Condidate(item)) })
+    condidateArr.forEach(item => { if (findNumber(item.greeting) == msg) unreadList.push(new Condidate(item)) })
 
-    console.log(unreadArr)
+    console.log(unreadList)
 
 }
 
@@ -126,8 +126,10 @@ getCondidatesByUnreadMsg(8)
 
 //task 9
 
-function getCondidatesByGender() {
-
+function getCondidatesByGender(gender) {
+    let genderList = []
+    condidateArr.forEach(item => { if (item.gender === gender) genderList.push(new Condidate(item)) })
+    console.log(genderList)
 }
 
 getCondidatesByGender('male')
