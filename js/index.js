@@ -47,3 +47,5 @@ goToShop().then((number) => {
 
     throw new ProductError(message)
 })
+
+//task 3
