@@ -82,12 +82,20 @@ document.querySelector('.form-container').addEventListener('click', (event) => {
     }
 })
 
-let template = (item) => { `<div class="card">
+let template = (item) => {
+
+    let addClass = ''
+
+    if (item.status === 'Dead') {
+        addClass = 'dead'
+    }
+
+    return `<div class="card">
 <div class="card-info">
     <div class="title">
         <h1>${item.name}</h1>
         <div class="status">
-            <div class="live-status"></div>
+            <div class="live-status ${addClass}"></div>
             <p>${item.status}</p>
         </div>
     </div>
@@ -98,7 +106,8 @@ let template = (item) => { `<div class="card">
 <div class="card-image">
     <img src="${item.image}" alt="Img">
 </div>
-</div>` }
+</div>`
+}
 
 
 function render(items) {
