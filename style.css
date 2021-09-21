@@ -1,0 +1,58 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.time-slot {
+    height: 60px;
+}
+
+.events {
+    display: flex;
+    width: 200px;
+    position: relative;
+}
+
+.event {
+    position: absolute;
+    background-color: #E2ECF5;
+    border-left: 3px solid #6E9ECF;
+    width: 200px
+}
+
+.modal {
+    overflow: hidden;
+    height: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background .5s;
+}
+
+.modal form {
+    opacity: 0;
+    transition: opacity .5s .5s;
+}
+
+.modal.active {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+}
+
+.modal.active form {
+    margin: auto;
+    background: #fff;
+    padding: 1em;
+    box-shadow: 0 0 2em 1px #333;
+    opacity: 1;
+}
