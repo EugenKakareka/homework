@@ -88,17 +88,22 @@ modal.addEventListener("click", function(event) {
     let end = modal.querySelector('input[name="end"]')
 
     if (event.target === this) {
-        this.classList.remove("active");
+        this.classList.remove("active")
         while (this.firstChild) {
-            this.removeChild(this.firstChild);
+            this.removeChild(this.firstChild)
         }
     }
     if (event.target.textContent === 'Delete') {
 
+        schedule = schedule.filter((item) => item.start !== timeToNumber(start.value))
+        render()
+        modal.classList.remove("active")
+        while (modal.firstChild) {
+            modal.removeChild(modal.firstChild)
+        }
 
     }
     if (event.target.textContent === 'Edit') {
-
 
     }
 })
