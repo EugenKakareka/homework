@@ -54,7 +54,7 @@ function numberTotime(num) {
 }
 
 
-const changeEvenTemplate = (item) => `
+const changeEventTemplate = (item) => `
 <form id="form-event">
     <input type="text" id="form-title" name="title" value="${item.title}">
     <input type="text" id="form-start" name="start" value="${numberTotime(item.start) }">
@@ -63,9 +63,25 @@ const changeEvenTemplate = (item) => `
     <button type="button">Delete</button>
 </form>`
 
+const addEventTemplate = `
+<form id="form-event">
+    <input type="text" id="form-title" name="title" placeholder="Event title" >
+    <input type="text" id="form-start" name="start" placeholder="Start time">
+    <input type="text" id="form-end" name="end" placeholder="End time" > 
+    <button type="button">Add event</button>
+</form>
+`
+
 let modal = document.querySelector('.modal')
 
 let eventModal = document.querySelector(".events")
+
+let timeModal = document.querySelector(".time")
+
+timeModal.addEventListener("click", function() {
+    modal.classList.add('active')
+    modal.insertAdjacentHTML('afterbegin', addEventTemplate)
+})
 
 function findEvent(event) {
     let id = parseInt(event.target.style.top) || parseInt(event.target.parentElement.style.top)
@@ -76,7 +92,7 @@ function findEvent(event) {
 eventModal.addEventListener("click", function(event) {
 
     modal.classList.add('active')
-    let modalForm = changeEvenTemplate(findEvent(event))
+    let modalForm = changeEventTemplate(findEvent(event))
 
     modal.insertAdjacentHTML('afterbegin', modalForm)
 })
