@@ -37,8 +37,12 @@ render()
 
 function timeToNumber(str) {
     let arr = str.split(':')
-    let num = (arr[0] - 8) * 60 + parseInt(arr[1])
-    return num
+    if(arr[0].length>2||arr[1].length>2){
+        console.log('ошибка')                                                 //!!!!!!!!!
+    } else {
+        let num = (arr[0] - 8) * 60 + parseInt(arr[1])
+        return num
+    }
 }
 
 function numberTotime(num) {
@@ -66,7 +70,7 @@ const changeEventTemplate = (item) => `
 const addEventTemplate = `
 <form id="form-event">
     <input type="text" id="form-title" name="title" placeholder="Event title" >
-    <input type="text" id="form-start" name="start" placeholder="Start time">
+    <input type="text" id="form-start" name="start" placeholder="Start time" >
     <input type="text" id="form-end" name="end" placeholder="End time" > 
     <button type="button">Add event</button>
 </form>
@@ -86,23 +90,30 @@ timeModal.addEventListener("click", function() {
 function findEvent(event) {
     let id = parseInt(event.target.style.top) || parseInt(event.target.parentElement.style.top)
     let findEvent = schedule.find(item => item.start === id / 2)
-    return findEvent
+    return findEvent   
 }
 
 eventModal.addEventListener("click", function(event) {
-
-    modal.classList.add('active')
     let modalForm = changeEventTemplate(findEvent(event))
-
-    modal.insertAdjacentHTML('afterbegin', modalForm)
+    if(modalForm){
+        modal.classList.add('active')
+        modal.insertAdjacentHTML('afterbegin', modalForm)
+    }   
 })
 
+
+function close(){
+        modal.classList.remove("active")
+        while (modal.firstChild) {
+        modal.removeChild(modal.firstChild)
+    }}
 
 modal.addEventListener("click", function(event) {
     let title = modal.querySelector('input[name="title"]')
     let start = modal.querySelector('input[name="start"]')
     let end = modal.querySelector('input[name="end"]')
 
+    
     if (event.target === this) {
         this.classList.remove("active")
         while (this.firstChild) {
@@ -113,13 +124,20 @@ modal.addEventListener("click", function(event) {
 
         schedule = schedule.filter((item) => item.start !== timeToNumber(start.value))
         render()
-        modal.classList.remove("active")
-        while (modal.firstChild) {
-            modal.removeChild(modal.firstChild)
+        close()
         }
 
-    }
     if (event.target.textContent === 'Edit') {
 
+    }
+
+    if(event.target.textContent === 'Add event'){
+
+        let setEvent = {
+            start: timeToNumber(start.value+''),
+            duration: timeToNumber(end.value)-timeToNumber(start.value)+'',
+            title: title.value
+        }
+        
     }
 })
