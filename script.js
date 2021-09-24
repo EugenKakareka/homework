@@ -12,6 +12,8 @@ const mainArr = [
 
 let schedule = [...mainArr]
 
+//let id=Math.random().toString(36).substr(2, 5);
+
 // function addId(arr) {
 //     return arr.map(function(obj, index) {
 //         return Object.assign({}, obj, { id: index });
@@ -109,9 +111,9 @@ function close(){
     }}
 
 modal.addEventListener("click", function(event) {
-    let title = modal.querySelector('input[name="title"]')
-    let start = modal.querySelector('input[name="start"]')
-    let end = modal.querySelector('input[name="end"]')
+    let titleInput = modal.querySelector('input[name="title"]')
+    let startInput = modal.querySelector('input[name="start"]')
+    let endInput = modal.querySelector('input[name="end"]')
 
     
     if (event.target === this) {
@@ -122,7 +124,7 @@ modal.addEventListener("click", function(event) {
     }
     if (event.target.textContent === 'Delete') {
 
-        schedule = schedule.filter((item) => item.start !== timeToNumber(start.value))
+        schedule = schedule.filter((item) => item.start !== timeToNumber(startInput.value))
         render()
         close()
         }
@@ -133,11 +135,36 @@ modal.addEventListener("click", function(event) {
 
     if(event.target.textContent === 'Add event'){
 
-        let setEvent = {
-            start: timeToNumber(start.value+''),
-            duration: timeToNumber(end.value)-timeToNumber(start.value)+'',
-            title: title.value
+        let start = timeToNumber(startInput.value+'')
+        let end = timeToNumber(endInput.value+'')
+        let title = titleInput.value
+
+        if(startInput.value===''||endInput.value===''||titleInput.value===''){
+            console.log('ошибка')
+            return
         }
-        
+        if(end>540){
+            console.log('ошибка')
+            return
+        }
+        if(start<0){
+            console.log('ошибка')
+            return
+        }
+
+        if(end-start<0){
+            console.log('ошибка')
+            return
+        }
+
+        let setEvent = {
+            start: start,
+            duration:end-start,
+            title: title
+        }
+        schedule.push(setEvent)
+        console.log(schedule)
+        render()
+        close()
     }
 })
